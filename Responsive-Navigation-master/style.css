@@ -1,0 +1,178 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.nav {
+  position: relative;
+  top: -30px;
+  color: #2d3436;
+}
+
+.adv {
+  display: flex;
+  justify-content: space-evenly;
+  width: 960px;
+  margin: 0 auto;
+  opacity: 1;
+}
+
+li {
+  list-style-type: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+
+
+#nav-icon2 {
+  opacity: 0;
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin-top: -5px;
+  margin-left: auto;
+  margin-right: 30px;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+}
+
+#nav-icon2 span {
+  display: block;
+  position: absolute;
+  height: 7px;
+  width: 50%;
+  background: #2d3436;
+  opacity: 1;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+#nav-icon2 span:nth-child(even) {
+  left: 50%;
+  border-radius: 0 9px 9px 0;
+}
+
+#nav-icon2 span:nth-child(odd) {
+  left: 0px;
+  border-radius: 9px 0 0 9px;
+}
+
+#nav-icon2 span:nth-child(1),
+#nav-icon2 span:nth-child(2) {
+  top: 0px;
+}
+
+#nav-icon2 span:nth-child(3),
+#nav-icon2 span:nth-child(4) {
+  top: 18px;
+}
+
+#nav-icon2 span:nth-child(5),
+#nav-icon2 span:nth-child(6) {
+  top: 36px;
+}
+
+#nav-icon2.open span:nth-child(1),
+#nav-icon2.open span:nth-child(6) {
+  transform: rotate(45deg);
+}
+
+#nav-icon2.open span:nth-child(2),
+#nav-icon2.open span:nth-child(5) {
+  transform: rotate(-45deg);
+}
+
+#nav-icon2.open span:nth-child(1) {
+  left: 5px;
+  top: 7px;
+}
+
+#nav-icon2.open span:nth-child(2) {
+  left: calc(50% - 5px);
+  top: 7px;
+}
+
+#nav-icon2.open span:nth-child(3) {
+  left: -50%;
+  opacity: 0;
+}
+
+#nav-icon2.open span:nth-child(4) {
+  left: 100%;
+  opacity: 0;
+}
+
+#nav-icon2.open span:nth-child(5) {
+  left: 5px;
+  top: 29px;
+}
+
+#nav-icon2.open span:nth-child(6) {
+  left: calc(50% - 5px);
+  top: 29px;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+  #nav-icon2 {
+    opacity: 1;
+    margin-top: 50px;
+  }
+
+  #navl {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.adv {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.adv > li {
+  transition: .4s;
+  padding: 0 30px;
+  width: 20%;
+}
+
+#closel {
+  height: 0;
+  transition: .4s;
+}
+
+#closel li {
+  margin-top: -45px;
+  color: transparent;
+}
+
+#openl {
+  transition: .4s;
+  height: 11vh;
+}
+
+#openl  li {
+  margin-top: 0;
+  color: #2d3436;
+}
+
+.adv > li {
+  margin-bottom: 15px;
+}
+.adv > li:first-child {
+ padding-top: 15px;
+}
+
+.adv > li::first-letter {
+  padding-right: 15px;
+}
+
+
+}

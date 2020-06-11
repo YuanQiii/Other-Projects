@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.main {
+  margin-left: 40%;
+  margin-top: 10%;
+  position: relative;
+}
+
+
+.img {
+  position: absolute;
+  transition: .6s;
+}
+
+.img:first-of-type {
+  z-index: 9;
+}
+
+.point {
+  display: flex;
+  position: absolute;
+  left: 10%;
+  margin: 5px;
+  top: 460px;
+  z-index: 99;
+}
+
+span {
+  background-color: #fff;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+  transition: .6s;
+  cursor: pointer;
+}
+
+
+

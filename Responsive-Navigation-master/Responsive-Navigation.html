@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="nav">
+    <div id="nav-icon2" class="close">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div id="navl" class="closel">
+      <ul id="closel" class="adv">
+      <li>首页</li>
+      <li>归档</li>
+      <li>关于</li>
+      <li>留言</li>
+      <li>搜索</li>
+      <li>管理</li>
+      </ul>
+    </div>
+  </div>
+  <main>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam est voluptatibus sed ea fuga laudantium non impedit obcaecati, eos ex quia incidunt accusantium, dolorum voluptas magni consequuntur optio, hic perspiciatis.
+  </main>
+</body>
+<script>
+  window.onload = function (){
+    var navi = document.getElementById('nav-icon2')
+    var navl = document.getElementById('navl')
+    navi.addEventListener('click', function () {
+      if(navi.getAttribute('class')== 'close'){
+         navi.setAttribute('class','open')
+         navl.setAttribute('id','openl')
+      }
+     else{
+      navi.setAttribute('class','close')
+      navl.setAttribute('id','closel')
+     }
+
+    })
+  }
+</script>
+
+</html>

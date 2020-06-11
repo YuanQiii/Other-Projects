@@ -1,0 +1,28 @@
+.body {
+  margin: 5px;
+}
+
+.masonry {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 2500px;
+}
+
+.item {
+  position: relative;
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+
+
+

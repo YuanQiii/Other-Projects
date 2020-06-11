@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="image">
+      <img src="https://picsum.photos/500?random=1" alt="" class="img">
+      <img src="https://picsum.photos/500?random=2" alt="" class="img">
+      <img src="https://picsum.photos/500?random=3" alt="" class="img">
+      <img src="https://picsum.photos/500?random=4" alt="" class="img">
+      <img src="https://picsum.photos/500?random=5" alt="" class="img">
+      <img src="https://picsum.photos/500?random=6" alt="" class="img">
+    </div>
+    <div class="point">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+
+      var spans = document.querySelectorAll('span')
+      var imgs = document.querySelectorAll('.img')
+      var left = document.querySelector('.left')
+      var right = document.querySelector('.right')
+      var currentIndex = 0
+      var delay = 3000
+      var timer
+
+      imgs[currentIndex].style.opacity = 1
+      spans[currentIndex].style.backgroundColor = '#f90'
+
+      function spansClick(i) {
+        for (let j = 0; j < imgs.length; j++) {
+          imgs[j].style.opacity = 0
+          spans[j].style.backgroundColor = '#fff'
+        }
+        currentIndex = i
+        imgs[i].style.opacity = 1
+        spans[i].style.backgroundColor = '#f90'
+
+      }
+
+      function autoPlay(elements, styles, value1, value2) {
+        for (let x = 0; x < elements.length; x++) {
+
+          if (elements[x].style[styles] == value1) {
+            currentIndex = x
+          }
+          elements[x].style[styles] = value2
+        }
+
+        if (currentIndex == 5) {
+          elements[0].style[styles] = value1
+        } else {
+          elements[currentIndex + 1].style[styles] = value1
+          console.log(currentIndex);
+        }
+      }
+
+      timer = setInterval(() => {
+        autoPlay(imgs, 'opacity', 1, 0)
+        autoPlay(spans, 'backgroundColor', '#f90', '#fff')
+        currentIndex += 1
+      }, delay)
+
+      for (let i = 0; i < spans.length; i++) {
+        spans[i].addEventListener("click", function () {
+          spansClick(i)
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>
