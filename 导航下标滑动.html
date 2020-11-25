@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="nav-item">Docs</div>
+      <div class="nav-item">API</div>
+      <div class="nav-item">News</div>
+      <div class="nav-item">plugins</div>
+      <div class="nav-item">Themes</div>
+      <div class="nav-item">About</div>
+    </div>
+    <div class="line">
+
+    </div>
+  </div>
+</body>
+<script>
+  window.onload = function () {
+
+    var navItems = Array.from(document.querySelectorAll('.nav-item')),
+      line = document.querySelector('.line'),
+      navItemsInfo = [],
+      //获取下划线原始坐标
+      lineOrigin = getElementLeft(line),
+      lineCurrent = {
+        left: null,
+        width: null
+      },
+      timer = null,
+      isMouseenter = false
+
+
+    navItems.forEach(function (item, index) {
+
+      //获取每个元素信息
+      getElementInfo(item, navItemsInfo)
+
+      //设置鼠标移入事件
+      addEventMouseenter(item, index)
+
+      //设置点击事件
+      addEventClick(item, index)
+
+      //设置鼠标移出事件
+      addEventMouseleave(item)
+
+    })
+
+    function getElementInfo(item, navItemsInfo) {
+      //获取每个元素的宽度
+      //获取每个元素的绝对位置X坐标
+      navItemsInfo.push({
+        width: getComputedStyle(item, null).width,
+        left: getElementLeft(item)
+      })
+    }
+
+    //鼠标移入事件
+    function addEventMouseenter(item, index) {
+      item.addEventListener('mouseenter', function () {
+        isMouseenter = true
+        //设置下划线宽度
+        line.style.width = navItemsInfo[index].width
+        //获取差值
+        var diff = navItemsInfo[index].left - lineOrigin
+        if (diff > 0) {
+          line.style.marginLeft = diff + 'px'
+        } else if (diff < 0) {
+          line.style.marginLeft = -diff + 'px'
+        }
+      })
+    }
+
+    //鼠标移出事件
+    function addEventMouseleave(item) {
+      item.addEventListener('mouseleave', function () {
+        isMouseenter = false
+        if (timer) {
+          clearTimeout(timer)
+        }
+
+        timer = setTimeout(function () {
+          if(!isMouseenter){
+          line.style.marginLeft = lineCurrent.left
+          line.style.width = lineCurrent.width            
+          }
+
+        }, 500)
+
+      })
+    }
+
+    function addEventClick(item, index) {
+      item.addEventListener('click', function () {
+        //还原样式
+        navItems.forEach(function (elem) {
+          elem.setAttribute('class', 'nav-item')
+        })
+        //设置点击样式
+        item.setAttribute('class', 'nav-item choose')
+
+
+        var diff = navItemsInfo[index].left - lineOrigin
+
+        if (diff > 0) {
+          line.style.marginLeft = diff + 'px'
+          lineCurrent.left = diff + 'px'
+        } else if (diff < 0) {
+          line.style.marginLeft = -diff + 'px'
+          lineCurrent.left = -diff + 'px'
+        }
+
+        //设置当前下划线宽度
+        lineCurrent.width = navItemsInfo[index].width
+
+      })
+    }
+
+    //初始化下划线
+    (function lineInit() {
+      //设置下划线宽度
+      // line.style.width = navItemWidth[0]
+      line.style.width = navItemsInfo[0].width
+      //获取差值
+      var diff = navItemsInfo[0].left - lineOrigin
+
+      if (diff > 0) {
+        line.style.marginLeft = diff + 'px'
+      } else if (diff < 0) {
+        line.style.marginLeft = -diff + 'px'
+      }
+
+      //设置当前下划线的宽度和外边距
+      lineCurrent.left = line.style.marginLeft
+      lineCurrent.width = navItemsInfo[0].width
+      //设置点击样式
+      navItems[0].setAttribute('class', 'nav-item choose')
+    })()
+    
+    //获取元素X方向绝对坐标
+    function getElementLeft(element) {
+      var actualLeft = element.offsetLeft;
+      var current = element.offsetParent;
+      
+      while (current !== null) {
+        actualLeft += current.offsetLeft;
+        current = current.offsetParent;
+      }
+
+      return actualLeft;
+    }
+
+
+
+
+  }
+</script>
+
+</html>

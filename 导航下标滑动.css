@@ -1,0 +1,26 @@
+.wrap {
+  width: 50%;
+  margin-top: 25%;
+  margin-left: 25%;
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  
+}
+.nav-item {
+  cursor: pointer;
+}
+
+.line {
+  height: 3px;
+  width: 0;
+  background-color: brown;
+  margin-top: 10px;
+  transition:  .3s;
+}
+
+.choose {
+  color: brown;
+}
